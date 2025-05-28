@@ -1,6 +1,16 @@
 {
   "dependencies": {
     "express": "^5.1.0",
-    "mongoose": "^8.15.1"
-  }
+    "mongoose": "^8.15.1",
+    "nodemon": "^3.1.10"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "Index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

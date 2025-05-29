@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFilters } from './Context';
 
 const Navbar = () => {
-    const { setSearchTerm } = useFilters() || {};
+    const { setSearchTerm } = useFilters();
     const [localSearchTerm, setLocalSearchTerm] = useState('');
 
     const handleSearchChange = (e) => {
@@ -11,17 +11,12 @@ const Navbar = () => {
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
-        if (setSearchTerm) {
-            setSearchTerm(localSearchTerm);
-        }
-        // You can add search logic here
+        setSearchTerm(localSearchTerm);
         console.log('Searching for:', localSearchTerm);
     };
 
     const handleLogoClick = () => {
-        if (setSearchTerm) {
-            setSearchTerm('');
-        }
+        setSearchTerm('');
         setLocalSearchTerm('');
     };
 

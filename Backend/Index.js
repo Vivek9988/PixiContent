@@ -10,10 +10,7 @@ app.get('/api/photographers', (req, res) => {
 });
 app.get('/api/photo', (req, res) => {
     res.send(
-         vivek={
-            hello:"ji",
-
-        }
+         "hello from server"
         );
 });
 

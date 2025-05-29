@@ -4,7 +4,7 @@ const FilterContext = createContext();
 
 export const FilterProvider = ({ children }) => {
     const [searchTerm, setSearchTerm] = useState('');
-    const [selectedRating, setSelectedRating] = useState('');
+    const [name, setName] = useState([]);
     const [selectedStyles, setSelectedStyles] = useState([]);
     const [selectedCity, setSelectedCity] = useState('');
     const [sortOption, setSortOption] = useState('');
@@ -13,7 +13,7 @@ export const FilterProvider = ({ children }) => {
         <FilterContext.Provider
             value={{
                 searchTerm, setSearchTerm,
-                selectedRating, setSelectedRating,
+                name, setName,
                 selectedStyles, setSelectedStyles,
                 selectedCity, setSelectedCity,
                 sortOption, setSortOption,

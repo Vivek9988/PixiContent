@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
-import Navbar from './Component/Navbar';
 import { useFilters } from './Component/Context';
+import Navbar from './Component/Navbar';
+import { NavLink } from 'react-router-dom';
 
 function App() {
   const { searchTerm, name, setName } = useFilters();
@@ -11,6 +12,7 @@ function App() {
       try {
         const response = await axios.get('api/photographers');
         setName(response.data.photographers);
+        console.log(name.id)
       } catch (error) {
         console.error('Error fetching photographers:', error);
       }
@@ -19,14 +21,13 @@ function App() {
     fetchPhotographers();
   }, []);
 
-  // Filter photographers based on search term
   const filteredPhotographers = name.filter(photographer =>
     photographer.name.toLowerCase().startsWith(searchTerm.toLowerCase())
   );
 
   return (
     <>
-      <Navbar />
+    <Navbar/>
       <div className="p-6">
         <h1 className="text-2xl font-bold mb-6">Photographers</h1>
         {filteredPhotographers.length === 0 ? (
@@ -47,7 +48,6 @@ function App() {
                   />
                 </div>
 
-                {/* Photographer Details */}
                 <div className="p-4">
                   <div className="flex justify-between items-start mb-2">
                     <h2 className="text-xl font-semibold">{photographer.name}</h2>
@@ -56,7 +56,6 @@ function App() {
                     </span>
                   </div>
 
-                  {/* Rating and Price */}
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center">
                       <span className="text-yellow-500 mr-1">★</span>
@@ -65,7 +64,6 @@ function App() {
                     <span className="font-bold">₹{photographer.price.toLocaleString()}</span>
                   </div>
 
-                  {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {photographer.tags.map((tag, index) => (
                       <span
@@ -77,10 +75,9 @@ function App() {
                     ))}
                   </div>
 
-                  {/* View Profile Button */}
-                  <button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-md transition">
+                  <NavLink to="/PhotographerProfile" className="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-md transition">
                     View Profile
-                  </button>
+                  </NavLink>
                 </div>
               </div>
             ))}

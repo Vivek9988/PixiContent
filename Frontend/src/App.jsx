@@ -12,7 +12,7 @@ function App() {
       try {
         const response = await axios.get('api/photographers');
         setName(response.data.photographers);
-        console.log(name.id)
+        
       } catch (error) {
         console.error('Error fetching photographers:', error);
       }
@@ -20,6 +20,13 @@ function App() {
 
     fetchPhotographers();
   }, []);
+
+
+  // console.log("helo")
+  // name.map((sss) => {
+  //   console.log(sss.id)
+  // })
+  
 
   const filteredPhotographers = name.filter(photographer =>
     photographer.name.toLowerCase().startsWith(searchTerm.toLowerCase())
